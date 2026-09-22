@@ -210,7 +210,7 @@ set -o pipefail
 ```bash
 ls -l /dev/ttyACM*
 PORT=/dev/ttyACM0
-python3 -m serial.tools.miniterm "$PORT" 115200 --eol LF
+python3 -m serial.tools.miniterm "$PORT" 115200 --eol LF -e
 ```
 
 READY와 정상 준비 상태를 확인합니다. 초기 출력을 놓쳤다면 안전한 정지 상태에서 RESET으로 다시 확인할 수 있습니다. USB가 재연결되면 포트와 모니터를 다시 확인하세요. FAULT는 정상 준비 완료가 아닙니다. 원인을 확인하고 해결한 뒤 과제를 진행하세요. 모니터 종료는 Ctrl+]입니다.
