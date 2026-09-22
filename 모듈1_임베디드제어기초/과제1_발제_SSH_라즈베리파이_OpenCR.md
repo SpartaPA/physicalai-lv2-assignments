@@ -35,6 +35,8 @@ SSH 원격 환경에서 OpenCR에 펌웨어를 업로드하고, 다이나믹셀�
 
 ## 제공 자료와 적용 조건
 
+- [OpenCR 빌드·업로드 가이드](OpenCR_빌드_업로드_가이드.md): 라즈베리파이에서 직접 빌드하는 경우 참고하세요. 제공 펌웨어 사용도 가능하며 직접 컴파일은 필수 평가 항목이 아닙니다.
+
 - [과제용 P 제어 소스](examples/opencr_position_p/opencr_position_p.ino)
 - [펌웨어 및 적용 장비 정보](firmware/README.md)
 
