@@ -1,9 +1,5 @@
-# 모듈 1 과제용 P 제어 예제
+# 과제 제공 코드
 
-[실습 준비](../실습준비.md)를 먼저 확인하세요.
+[OpenCR P 제어 소스](opencr_position_p/opencr_position_p.ino)는 모듈 1 과제에 사용할 수 있는 제공 자료입니다.
 
-[opencr_position_p.ino](opencr_position_p/opencr_position_p.ino)를 사용합니다. 이번 과제는 P 제어 실행 두 번만 비교하며 PI·PID 구현과 튜닝을 요구하지 않습니다.
-
-진행자가 확인한 설정 예시: `s 0.3 15 30`으로 실행 A, 정지 및 자세·이동 여유 확인 후 `s 0.6 15 30`으로 실행 B. `x`로 정지합니다. 각 실행은 현재 위치를 0도로 잡습니다. `max`는 사용하지 않습니다.
-
-명령은 `s Kp 속도상한(도/초) 상대목표각(도)` 형식입니다. 실측 로그의 `target_deg`, `position_deg`, `error_deg`, `u_deg_s`, `speed_deg_s`, `t_s`를 사용합니다.
+수행 조건과 제출 기준은 [과제 발제문서](../과제_발제_OpenCR_다이나믹셀_4문제.md)를 따릅니다. 오늘의 범위는 [과제 1 발제문서](../과제1_발제_SSH_라즈베리파이_OpenCR.md)를 확인하세요.
