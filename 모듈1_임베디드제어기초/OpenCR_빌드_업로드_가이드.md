@@ -219,6 +219,8 @@ READY와 정상 준비 상태를 확인합니다. 초기 출력을 놓쳤다면 
 
 ## 문제 해결
 
+연결·전원을 확인해도 `FAULT: RESET required.`가 계속되면 [읽기 전용 모터 진단](../diagnostics/README.md)으로 ID·통신속도와 장치 상태를 확인할 수 있습니다.
+
 | 현상 | 확인 사항 |
 |---|---|
 | Exec format error | uname -m과 CLI·업로더의 file 결과가 호스트와 일치하는지 |
