@@ -221,6 +221,49 @@ READY와 정상 준비 상태를 확인합니다. 초기 출력을 놓쳤다면 
 
 연결·전원을 확인해도 `FAULT: RESET required.`가 계속되면 [읽기 전용 모터 진단](../diagnostics/README.md)으로 ID·통신속도와 장치 상태를 확인할 수 있습니다.
 
+모터 설정을 바꾸지 않고 ID·통신속도를 찾는 진단 펌웨어를 준비했습니다. 모터 한 개만 연결하고, 회전 범위를 비워 두세요.
+1. Ctrl+]로 시리얼 모니터를 닫고, 라즈베리파이에서 실행하세요.
+```bash
+mkdir -p ~/opencr-diagnosis
+cd ~/opencr-diagnosis
+
+URL=https://raw.githubusercontent.com/SpartaPA/physicalai-lv2-assignments/main/diagnostics
+
+curl -fLO "$URL/opencr_diagnostic.bin"
+curl -fLO "$URL/SHA256SUMS"
+sha256sum -c SHA256SUMS
+```
+opencr_diagnostic.bin: OK가 나오면 다음으로 진행하세요.
+2. 진단 펌웨어를 업로드합니다. 기존 과제 펌웨어는 진단 후 다시 올리면 됩니다.
+```bash
+UPLOADER="$HOME/pa-opencr-build/uploader-src/arduino/opencr_develop/opencr_ld/opencr_ld"
+
+if [ ! -x "$UPLOADER" ]; then
+  UPLOADER="$HOME/opencr-uploader-src/arduino/opencr_develop/opencr_ld/opencr_ld"
+fi
+
+ls -l /dev/ttyACM*
+```
+OpenCR 포트가 ttyACM0이면:
+```bash
+"$UPLOADER" /dev/ttyACM0 115200 \
+  "$HOME/opencr-diagnosis/opencr_diagnostic.bin" 1
+```
+CRC OK와 [OK] Download를 확인하세요. 오류가 나오면 여기서 멈추고 출력 내용을 보내주세요.
+3. 다시 연결하세요.
+```bash
+python3 -m serial.tools.miniterm /dev/ttyACM0 115200 --eol LF
+```
+모니터 안에서 아래를 입력하고 Enter:
+```
+help
+```
+OPENCR_DIAGNOSTIC_V1이 나오면 다음을 입력하고 Enter:
+```bash
+scan
+```
+최대 약 1분 기다린 뒤 FOUND부터 SCAN_DONE까지의 출력을 보내주세요. NOT_FOUND가 나오면 그것도 그대로 보내주세요. RESET이나 모터 구동 명령은 입력하지 마세요.
+
 | 현상 | 확인 사항 |
 |---|---|
 | Exec format error | uname -m과 CLI·업로더의 file 결과가 호스트와 일치하는지 |
